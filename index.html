@@ -1,0 +1,103 @@
+<html>
+<head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	#calculator{
+		width: 300px;
+		margin: 50px auto;
+		padding: 10px;
+		border: 1px solid gray;
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	}
+	button, input{
+		outline: none; 
+	}
+	button{
+		padding: 5px;
+		width: 23.5%;
+	}
+	button:hover{
+		background-color: #696969;
+		cursor: pointer;
+	}
+  .screen{
+		width: 71.5%;
+		padding: 4px;
+		text-align: right;
+    border: 1px solid gray;
+	}
+  .row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+	<div id="calculator">
+	  
+	  <div class="row">
+	    <div class="screen"></div>
+	    <button>C</button>
+	  </div>
+
+	  <div class="row">
+	    <button>1</button>
+	    <button>2</button>
+	    <button>3</button>
+	    <button>/</button>
+	  </div>
+
+	  <div class="row">
+	    <button>4</button>
+	    <button>5</button>
+	    <button>6</button>
+	    <button>*</button>
+	  </div>
+
+	  <div class="row">
+	    <button>7</button>
+	    <button>8</button>
+	    <button>9</button>
+	    <button>-</button>
+	  </div>
+
+	  <div class="row">
+	    <button>.</button>
+	    <button>0</button>
+	    <button>=</button>
+	    <button>+</button>
+	  </div>
+
+	</div>
+	
+  <script type="text/javascript">
+    var keys = document.querySelectorAll('.row button'); 
+
+    for(var i = 0; i < keys.length; i++) {
+      keys[i].onclick = function(e) {
+        var input = document.querySelector('.screen');
+        var inputVal = input.innerHTML;
+        var btnVal = this.innerHTML;
+        input.innerHTML = inputVal + btnVal;
+
+        if(btnVal=="="){
+          input.innerHTML=eval(inputVal);;
+        }
+        if(btnVal=="C"){
+          input.innerHTML="";
+        }
+        if((btnVal=="*"||btnVal=="-"||btnVal=="+"||btnVal=="/"||btnVal=="."||btnVal=="=")&&inputVal==""){
+          input.innerHTML = inputVal;
+        }
+
+        console.log(inputVal.length); 
+    }
+}
+	</script>>
+</body>
+</html>
